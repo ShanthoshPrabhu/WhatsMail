@@ -77,11 +77,11 @@ export default function Component() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="w-[50%] sm:w-[30%] lg:w-[50%] flex items-center justify-center">
+                  <div className="w-[50%] bg-white  rounded-full sm:w-[30%] lg:w-[50%] flex items-center justify-center">
                     <img
-                      src="/gmail-logo.png"
+                      src="/gmail-logo.png "
                       alt="Gmail"
-                      className="object-contain"
+                      className="object-contain rounded-[50%]"
                     />
                   </div>
                 </div>

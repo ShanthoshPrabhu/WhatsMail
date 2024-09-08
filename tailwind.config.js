@@ -53,11 +53,11 @@ export default {
       },
       keyframes: {
         spin: {
-          '0%': { transform: 'rotate(0deg)', borderColor: '#25D366 transparent transparent transparent' },
-          '25%': { transform: 'rotate(90deg)', borderColor: '#EA4335 transparent transparent transparent' },
-          '50%': { transform: 'rotate(180deg)', borderColor: '#FBBC05 transparent transparent transparent' },
-          '75%': { transform: 'rotate(270deg)', borderColor: '#34A853 transparent transparent transparent' },
-          '100%': { transform: 'rotate(360deg)', borderColor: '#4285F4 transparent transparent transparent' },
+          '0%': { transform: 'rotate(0deg)', borderColor: '#EA4335 transparent transparent transparent' },
+          '25%': { transform: 'rotate(90deg)', borderColor: '#FBBC05 transparent transparent transparent' },
+          '50%': { transform: 'rotate(180deg)', borderColor: '#34A853 transparent transparent transparent' },
+          '75%': { transform: 'rotate(270deg)', borderColor: '#4285F4 transparent transparent transparent' },
+          '100%': { transform: 'rotate(360deg)', borderColor: '#25D366 transparent transparent transparent' },
         },
       },
       animation: {
