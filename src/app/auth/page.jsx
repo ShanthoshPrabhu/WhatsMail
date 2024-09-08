@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FcGoogle, FcInfo } from "react-icons/fc";
 import { FaMicrosoft, FaYahoo } from "react-icons/fa6";
@@ -45,7 +45,7 @@ export default function Auth() {
       setLoading(false);
     } catch (error) {
       console.error(error);
-        setLoading(false);
+      setLoading(false);
       toast.error("Failed to verify phone number");
     }
   }
@@ -87,67 +87,73 @@ export default function Auth() {
       </div>
     );
   }
-  return authCode ? (
-    <div className=" min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <Toaster />
-      <div className=" bg-white shadow-lg rounded-lg max-w-xl w-full p-10">
-        <div className="text-lg text-left mb-6">Enter Your Phone Number</div>
-        <input
-          type="phone"
-          placeholder="Phone Number"
-          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-100 mb-6"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-        <button
-          onClick={verifyNumber}
-          className="w-full inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-        >
-          {loading ? <DotLoader /> : "Continue"}
-        </button>
-      </div>
-    </div>
-  ) : (
-    <div className="flex h-screen items-center justify-center bg-background">
-      <Toaster />
-      <div className="mx-4 w-full max-w-md space-y-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Login</h1>
-          <p className="mt-2 text-muted-foreground">
-            Sign in to your account using one of the following options.
-          </p>
-        </div>
-        <div className="w-full flex flex-col justify-center items-center space-y-4">
-          <GoogleAuthComponent scope="https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/userinfo.profile email profile" />
-          <div>
+  return (
+    <Suspense>
+      {authCode ? (
+        <div className=" min-h-screen flex flex-col items-center justify-center bg-gray-100">
+          <Toaster />
+          <div className=" bg-white shadow-lg rounded-lg max-w-xl w-full p-10">
+            <div className="text-lg text-left mb-6">
+              Enter Your Phone Number
+            </div>
+            <input
+              type="phone"
+              placeholder="Phone Number"
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-100 mb-6"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
             <button
-              disabled
-              onClick={() => {
-                toast("Coming soon", {
-                  icon: <FcInfo className="w-6 h-6" />,
-                });
-              }}
-              className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+              onClick={verifyNumber}
+              className="w-full inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
             >
-              <FaMicrosoft className="mr-2" /> Sign in with Microsoft
-            </button>
-          </div>
-          <div>
-            <button
-              disabled
-              onClick={() => {
-                toast("Coming soon", {
-                  icon: <FcInfo className="w-6 h-6" />,
-                });
-              }}
-              className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-            >
-              <FaYahoo className="mr-2" /> Sign in with Yahoo
+              {loading ? <DotLoader /> : "Continue"}
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div className="flex h-screen items-center justify-center bg-background">
+          <Toaster />
+          <div className="mx-4 w-full max-w-md space-y-6">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold">Login</h1>
+              <p className="mt-2 text-muted-foreground">
+                Sign in to your account using one of the following options.
+              </p>
+            </div>
+            <div className="w-full flex flex-col justify-center items-center space-y-4">
+              <GoogleAuthComponent scope="https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/userinfo.profile email profile" />
+              <div>
+                <button
+                  disabled
+                  onClick={() => {
+                    toast("Coming soon", {
+                      icon: <FcInfo className="w-6 h-6" />,
+                    });
+                  }}
+                  className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <FaMicrosoft className="mr-2" /> Sign in with Microsoft
+                </button>
+              </div>
+              <div>
+                <button
+                  disabled
+                  onClick={() => {
+                    toast("Coming soon", {
+                      icon: <FcInfo className="w-6 h-6" />,
+                    });
+                  }}
+                  className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <FaYahoo className="mr-2" /> Sign in with Yahoo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </Suspense>
   );
 }
 
@@ -206,7 +212,7 @@ const GoogleAuthComponent = ({
     <div>
       <button
         onClick={() => handleLoginClick()}
-        className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+        className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-black/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
       >
         <FcGoogle className="mr-2" /> {text}
       </button>
