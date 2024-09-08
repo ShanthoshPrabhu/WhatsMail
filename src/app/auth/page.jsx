@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -39,7 +40,7 @@ export default function Auth() {
         code: authCode,
         phone: "91" + `${phoneNumber}`,
       });
-      if (response.success) {
+      if (response.data.status) {
         toast.success("Phone number verified successfully");
         router.push("/dashboard");
       }
@@ -94,8 +95,7 @@ export default function Auth() {
         <Link
           href={`${process.env.NEXT_PUBLIC_APP_URL}`}
           className="flex items-center justify-center"
-          prefetch={false}
-        >
+          prefetch={false}>
           <img
             src="/whatsmail.jpg"
             alt="logo"
@@ -120,8 +120,7 @@ export default function Auth() {
             />
             <button
               onClick={verifyNumber}
-              className="w-full inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-            >
+              className="w-full inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
               {loading ? <DotLoader /> : "Continue"}
             </button>
           </div>
@@ -146,8 +145,7 @@ export default function Auth() {
                       icon: <FcInfo className="w-6 h-6" />,
                     });
                   }}
-                  className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                >
+                  className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                   <FaMicrosoft className="mr-2" /> Sign in with Microsoft
                 </button>
               </div>
@@ -159,8 +157,7 @@ export default function Auth() {
                       icon: <FcInfo className="w-6 h-6" />,
                     });
                   }}
-                  className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                >
+                  className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                   <FaYahoo className="mr-2" /> Sign in with Yahoo
                 </button>
               </div>
@@ -227,8 +224,7 @@ const GoogleAuthComponent = ({
     <div>
       <button
         onClick={() => handleLoginClick()}
-        className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-black/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-      >
+        className="w-[300px] inline-flex border border-gray-100 h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-white-foreground shadow transition-colors hover:bg-black/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
         <FcGoogle className="mr-2" /> {text}
       </button>
     </div>
