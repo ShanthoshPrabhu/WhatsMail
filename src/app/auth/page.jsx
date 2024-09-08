@@ -39,7 +39,7 @@ export default function Auth() {
         code: authCode,
         phone: "91" + `${phoneNumber}`,
       });
-      if (response.data.success) {
+      if (response.success) {
         toast.success("Phone number verified successfully");
         router.push("/dashboard");
       }
