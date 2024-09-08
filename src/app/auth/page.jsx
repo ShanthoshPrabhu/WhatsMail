@@ -6,6 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { FcGoogle, FcInfo } from "react-icons/fc";
 import { FaMicrosoft, FaYahoo } from "react-icons/fa6";
 import DotLoader from "@/component/DotLoader/DotLoader";
+import Link from "next/link";
 
 export default function Auth() {
   const [loading, setLoading] = useState(true);
@@ -89,6 +90,20 @@ export default function Auth() {
   }
   return (
     <Suspense>
+      <header className="px-4 lg:px-6 h-14 flex items-center fixed  top-0">
+        <Link
+          href={`${process.env.NEXT_PUBLIC_APP_URL}`}
+          className="flex items-center justify-center"
+          prefetch={false}
+        >
+          <img
+            src="/whatsmail.jpg"
+            alt="logo"
+            className="h-8 w-8  rounded-full"
+          />
+          <span className="ml-2 tracking-wide">WhatsMail</span>
+        </Link>
+      </header>
       {authCode ? (
         <div className=" min-h-screen flex flex-col items-center justify-center bg-gray-100">
           <Toaster />

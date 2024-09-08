@@ -5,11 +5,11 @@ export default function Component() {
     <div className="flex flex-col min-h-[100dvh]">
       <header className="px-4 lg:px-6 h-14 flex items-center">
         <Link
-          href="#"
+           href={`${process.env.NEXT_PUBLIC_APP_URL}`}
           className="flex items-center justify-center"
           prefetch={false}
         >
-          <MountainIcon className="h-6 w-6" />
+          <img src="/whatsmail.jpg" alt="logo" className="h-8 w-8  rounded-full" />
           <span className="ml-2 tracking-wide">WhatsMail</span>
         </Link>
         {/* <nav className="ml-auto flex gap-4 sm:gap-6">
@@ -46,7 +46,7 @@ export default function Component() {
       <main className="flex-1 px-10 space-y-10 ">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 flex justify-center items-center lg:min-h-[90vh]">
           <div className=" px-4 md:px-6 w-full lg:w-[80%]">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] xl:gap-20">
+            <div className="grid gap-6 lg:grid-cols-[1fr_300px] lg:gap-12 xl:grid-cols-[1fr_400px] 2xl:grid-cols-[1fr_600px] xl:gap-20">
               <div className="min-h-[50vh] md:min-h-[30vh]  relative flex flex-col justify-center space-y-4 ">
                 <div className="space-y-8">
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none">
@@ -85,7 +85,7 @@ export default function Component() {
                     />
                   </div>
                 </div>
-                <div className="spinner  w-[250px] h-[250px] lg:w-[370px] lg:h-[370px] absolute border-t-[8px] border-r-[8px] border-transparent border-b-[8px] border-l-[8px] rounded-full animate-spin"></div>
+                <div className="spinner  w-[250px] h-[250px] lg:w-[200px] lg:h-[200px] xl:w-[250px] xl:h-[250px] 2xl:w-[370px] 2xl:h-[370px] absolute border-t-[8px] border-r-[8px] border-transparent border-b-[8px] border-l-[8px] rounded-full animate-spin"></div>
               </div>
             </div>
           </div>

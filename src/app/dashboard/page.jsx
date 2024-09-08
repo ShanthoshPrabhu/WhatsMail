@@ -1,12 +1,26 @@
-
 "use client";
 import React from "react";
 import { QRCodeCanvas } from "qrcode.react";
+import Link from "next/link";
 
 function Dashboard() {
   return (
     <div className="whatsapp-bg flex items-center justify-center min-h-screen">
-      <div className="bg-white shadow-lg rounded-xl max-w-3xl w-full py-12 px-10 flex items-center justify-center">
+      <header className="px-4 lg:px-6 h-14 flex items-center fixed w-full top-0">
+        <Link
+          href={`${process.env.NEXT_PUBLIC_APP_URL}`}
+          className="flex items-center justify-center"
+          prefetch={false}
+        >
+          <img
+            src="/whatsmail.jpg"
+            alt="logo"
+            className="h-8 w-8  rounded-full"
+          />
+          <span className="ml-2 tracking-wide">WhatsMail</span>
+        </Link>
+      </header>
+      <div className="bg-white shadow-lg rounded-xl max-w-3xl w-full py-6 px-10 flex items-center justify-center">
         <p className=" lg:text-2xl">
           Scan the following QR Code to start interacting with the WhatsApp
           platform
